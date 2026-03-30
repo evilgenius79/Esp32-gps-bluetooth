@@ -103,7 +103,7 @@ void loop() {
 
     while (Serial2.available()) {
         char c = Serial2.read();
-        SerialBT.write(c);
+        if (SerialBT.hasClient()) SerialBT.write(c);
 
         // FIX 7: Reset buffer on sentence start — prevents unbounded growth
         // from missing newlines, and discards any partial previous sentence.
